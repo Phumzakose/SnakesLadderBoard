@@ -13,7 +13,7 @@ while (diceStart < 6)
   Console.WriteLine("===========================================================");
 }
 
-// Intance
+// Instance of the class
 Move test = new Move();
 Console.WriteLine(test.StartPlaying(diceStart));
 
@@ -22,17 +22,18 @@ int diceResult = 0;
 while (test.block < 100)
 {
   Console.WriteLine("Please roll the dice again");
+
   int diceValue = Convert.ToInt32(Console.ReadLine());
-  diceResult = test.BlockStage(diceValue);
-  diceResult = (test.Ladders(diceResult) != 0) ? test.Ladders(diceResult) : diceResult;
-  diceResult = (test.Snakes(diceResult) != 0) ? test.Snakes(diceResult) : diceResult;
-  //Console.WriteLine($"Ladder : {test.Ladders(diceResult)}");
-  //Console.WriteLine($"Snake : {test.Snakes(diceResult)}");
-  Console.WriteLine(test.LedderMsg(diceResult));
+
+  diceResult = test.BlockPosition(diceValue);
+
+  diceResult = (test.ClimbLadders(diceResult) != 0) ? test.ClimbLadders(diceResult) : diceResult;
+  diceResult = (test.EatenBySnake(diceResult) != 0) ? test.EatenBySnake(diceResult) : diceResult;
+
+  Console.WriteLine("===========================================================");
   Console.WriteLine(test.Message(diceResult));
   Console.WriteLine($"Block : [{diceResult}]");
   Console.WriteLine("===========================================================");
-  // Messages
 }
 
 

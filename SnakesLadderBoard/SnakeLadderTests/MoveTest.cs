@@ -3,16 +3,31 @@ namespace SnakeLadderTests;
 
 public class MoveTest
 {
+  Move test = new Move();
+
+  // Tests for StartPlaying Method 
   [Fact]
   public void ItShouldBeAbleToReturn_YouAreToReadyPlay()
   {
-    Move test1 = new Move();
-    Assert.Equal("You are ready to play!!!", test1.StartPlaying(6));
+    Assert.Equal("You are ready to play!!!", test.StartPlaying(6));
   }
   [Fact]
   public void ItShouldBeAbleToReturn_EnterNumberAgain()
   {
-    Move test2 = new Move();
-    Assert.Equal("Enter a number again", test2.StartPlaying(3));
+    Assert.Equal("Enter a number again", test.StartPlaying(3));
+  }
+
+  // Tests for BlockPosition Method 
+  [Fact]
+  public void ShouldReturnTheBlockNumberThePlayerIsAtOnTheBoard()
+  {
+    test.block = 1;
+    Assert.Equal(4, test.BlockPosition(3));
+  }
+  [Fact]
+  public void ShouldReturnOneIfTheNumberPlayedIsNotBetweenOneAndSix()
+  {
+    test.block = 1;
+    Assert.Equal(1, test.BlockPosition(8));
   }
 }
